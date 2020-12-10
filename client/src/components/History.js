@@ -5,9 +5,9 @@ const History = () => {
     return (
         <div>
              <h3>History</h3>
-      <ul id="list" class="list">
-        <Transactions/>
-      </ul>
+             <ul id="list" className="list">
+                <Transactions/>
+             </ul>
         </div>
     )
 }

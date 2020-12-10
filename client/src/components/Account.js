@@ -3,6 +3,7 @@ import Header from './Header'
 import Balance from './Balance'
 import IncomeExpense from './IncomeExpense'
 import History from './History'
+import NewTransactions from './NewTransactions'
 
 export const Account = () => {
     return (
@@ -11,6 +12,7 @@ export const Account = () => {
             <Balance/>
             <IncomeExpense/>
             <History/>
+            <NewTransactions/>
         </div>
     )
 }
