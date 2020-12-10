@@ -5,11 +5,11 @@ const History = () => {
     return (
         <div>
              <h3>History</h3>
-             <ul id="list" className="list">
+             <ul className="list">
                 <Transactions/>
              </ul>
         </div>
     )
 }
 
-export default History
+export default History;
