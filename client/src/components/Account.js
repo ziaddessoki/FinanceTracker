@@ -5,15 +5,19 @@ import IncomeExpense from './IncomeExpense'
 import History from './History'
 import NewTransactions from './NewTransactions'
 
+import {GlobalProvider} from '../context/GlobalState'
+
 export const Account = () => {
     return (
-        <div>
+        <GlobalProvider>
             <Header/>
+            <div className="container">
             <Balance/>
             <IncomeExpense/>
             <History/>
             <NewTransactions/>
-        </div>
+            </div>
+        </GlobalProvider>
     )
 }
 
