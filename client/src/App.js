@@ -1,12 +1,18 @@
 import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import  Account from './components/Account'
+import { GlobalProvider } from './context/GlobalState'
+import Account from './components/Account/Account'
+import Login from './components/login'
+
 
 function App() {
   return (
-    <div>
-      <Account/>
-    </div>
+
+    <GlobalProvider>
+      <Account />
+    </GlobalProvider>
+
   );
 }
 
