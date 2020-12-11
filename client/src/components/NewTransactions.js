@@ -14,13 +14,13 @@ const NewTransactions = () => {
     const newTransaction = {
       id: uuidv4(),
       text: text.charAt(0).toUpperCase() + text.slice(1),
-      amount: parseInt(amount)
+      amount: parseFloat(amount)
     }
 
     addTransaction(newTransaction)
     setText('');
     setAmount(0)
-
+    console.log(newTransaction)
   }
 
   return (

@@ -109,6 +109,9 @@ input[type="number"] {
   list-style-type: none;
   padding: 0;
   margin-bottom: 40px;
+  height: 230px;
+  overflow-y:scroll;
+ 
 }
 
 .list li {
@@ -119,7 +122,8 @@ input[type="number"] {
   justify-content: space-between;
   position: relative;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px auto;
+  width: 85%;
 }
 
 .list li.plus {
