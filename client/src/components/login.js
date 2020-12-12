@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react';
 
-const login = () => {
+const Login = () => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        password: "",
+        password: ""
     });
-    //destructor
+    // destructor
     const { email, password, name } = formData;
 
     const onChange = (e) =>
@@ -63,4 +63,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login

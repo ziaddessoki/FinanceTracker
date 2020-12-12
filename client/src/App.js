@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import { GlobalProvider } from './context/GlobalState'
 import Account from './components/Account/Account'
-import Login from './components/login'
+import Login from './components/Login'
 
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
 
     <GlobalProvider>
       <Account />
+      <Login />
     </GlobalProvider>
 
   );
