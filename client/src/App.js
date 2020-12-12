@@ -14,11 +14,9 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <div className="container">
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/account" component={Account} />
-            <Route exact path="/signup" component={Signup} />
-          </div>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/account" component={Account} />
+          <Route exact path="/signup" component={Signup} />
         </Switch>
       </Router>
     </GlobalProvider>

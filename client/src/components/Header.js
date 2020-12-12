@@ -8,7 +8,7 @@ export const Header = () => {
             <h2 className="title">Finance Tracker</h2>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" className="dropdownBtn">
-                    <i class="fas fa-bars"></i>
+                    <i className="fas fa-bars"></i>
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu align="right">
