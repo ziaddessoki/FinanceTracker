@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
     const [formData, setFormData] = useState({
-        name: "",
         email: "",
         password: ""
     });
     // destructor
-    const { email, password, name } = formData;
+    const { email, password } = formData;
 
     const onChange = (e) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,13 +29,7 @@ const Login = () => {
         <i className="fas fa-user"></i>Log In
       </p> */}
             <form className="form" onSubmit={(e) => onSubmit(e)}>
-                <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    value={name}
-                    onChange={(e) => onChange(e)}
-                />
+
                 <input
                     type="email"
                     placeholder="Email Address"
@@ -44,7 +37,7 @@ const Login = () => {
                     value={email}
                     onChange={(e) => onChange(e)}
                 />
-
+                <br />
                 <input
                     type="password"
                     placeholder="Password"
@@ -58,7 +51,7 @@ const Login = () => {
             </form>
             <p className="my-1">
                 Don't have an account?
-                <Link to="/account">Sign Up</Link>
+                <Link to="/signup">Sign Up</Link>
             </p>
         </Fragment>
     )

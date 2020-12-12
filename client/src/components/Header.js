@@ -11,14 +11,14 @@ export const Header = () => {
                     <i class="fas fa-bars"></i>
                 </Dropdown.Toggle>
 
-                <Dropdown.Menu>
+                <Dropdown.Menu align="right">
 
-                    <Dropdown.Item href="/account">Action</Dropdown.Item>
-                    <Dropdown.Item ><Link to="/account">Sign Up</Link></Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                    <Dropdown.Item ><Link to="/login">Login</Link></Dropdown.Item>
+                    <Dropdown.Item ><Link to="/account">Account</Link></Dropdown.Item>
+
                 </Dropdown.Menu>
             </Dropdown>
-            <div class="clearfix"></div>
+            <div className="clearfix"></div>
         </Fragment>
     )
 }
