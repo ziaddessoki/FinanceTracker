@@ -22,8 +22,8 @@ const Login = () => {
     // }
     return (
         <Fragment>
-            <h1 className="large text-primary">
-                <i className="fas fa-user"></i>Log In
+            <h1>
+                <i className="fas fa-user"></i> Sign in
       </h1>
             {/* <p className="lead">
         <i className="fas fa-user"></i>Log In
@@ -47,11 +47,11 @@ const Login = () => {
                     onChange={(e) => onChange(e)}
                 />
 
-                <input type="submit" className="btn btn-primary" value="Log In" />
+                <input type="submit" className="btn btn-success loginBtn" value="Log In" />
             </form>
             <p className="my-1">
                 Don't have an account?
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/signup"> Sign Up</Link>
             </p>
         </Fragment>
     )

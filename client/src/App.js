@@ -5,7 +5,7 @@ import { GlobalProvider } from './context/GlobalState'
 import Header from './components/Header'
 import Account from './components/Account/Account'
 import Login from './components/Auth/Login'
-
+import Signup from './components/Auth/Signup'
 
 function App() {
   return (
@@ -14,8 +14,11 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/account" component={Account} />
+          <div className="container">
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/account" component={Account} />
+            <Route exact path="/signup" component={Signup} />
+          </div>
         </Switch>
       </Router>
     </GlobalProvider>
