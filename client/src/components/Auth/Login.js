@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -57,7 +58,7 @@ const Login = () => {
             </form>
             <p className="my-1">
                 Don't have an account?
-                {/* <Link to="/register">Sign Up</Link> */}
+                <Link to="/account">Sign Up</Link>
             </p>
         </Fragment>
     )
