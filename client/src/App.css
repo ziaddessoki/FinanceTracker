@@ -33,10 +33,11 @@ body {
   margin: 30px 20px;
   width: 400px;
   height: 650px;
-  /* overflow: hidden; */
 }
 .signContainer{
-  margin: 50px auto;
+  margin: 10px auto;
+  margin-top: 50px;
+  width:90%;
 }
 .accContainer {
   margin: 20px auto;
@@ -159,22 +160,15 @@ input[type="password"] {
 
 .incomeBtn{
   background-color: rgb(4, 160, 4);
-  /* position: absolute;
-  top: 50%;
-  right: 50%; */
   float:left;
 }
 .expenseBtn{
   background-color: red;
-  /* position: absolute;
-  top: 50%;
-  left: 50%; */
+ 
   float:right;
 }
 
-/* .buttons{
-  position: relative;
-} */
+
 
 .btn:focus,
 .delete-btn:focus {

@@ -48,9 +48,9 @@ const Signup = () => {
     // }
 
     return (
-        <Fragment>
-            <h1 className="large text-primary">Sign Up</h1>
-            <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
+        <div className="signContainer">
+            <h1 className="large "><i className="fas fa-user"></i> Sign Up</h1>
+            <p className="lead">Create Your Account</p>
             <form onSubmit={e => onSubmit(e)}>
 
                 <input type="text"
@@ -94,12 +94,12 @@ const Signup = () => {
                     onChange={e => onChange(e)}
                 />
 
-                <input type="submit" className="btn btn-primary" value="Register" />
+                <input type="submit" className="btn btn-success" value="Register" />
             </form>
             <p className="my-1">
                 Already have an account? <Link to="/login">Sign In</Link>
             </p>
-        </Fragment>
+        </div>
 
 
     )
