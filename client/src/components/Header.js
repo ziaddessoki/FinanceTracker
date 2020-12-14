@@ -13,9 +13,9 @@ export const Header = () => {
 
                 <Dropdown.Menu align="right">
                     {/* add Global state, signup and login will disabler  */}
-                    <Dropdown.Item ><Link to="/login">Login</Link></Dropdown.Item>
+                    <Dropdown.Item ><Link to="/login">Log In</Link></Dropdown.Item>
+                    <Dropdown.Item ><Link to="/signup">Sign Up</Link></Dropdown.Item>
                     <Dropdown.Item ><Link to="/account">Account</Link></Dropdown.Item>
-                    <Dropdown.Item ><Link to="/signup">Sign up</Link></Dropdown.Item>
 
                 </Dropdown.Menu>
             </Dropdown>

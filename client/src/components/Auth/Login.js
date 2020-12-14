@@ -23,7 +23,7 @@ const Login = () => {
     return (
         <div className="signContainer">
             <h1>
-                <i className="fas fa-user"></i> Sign in
+                <i className="fas fa-user"></i> Sign In
       </h1>
             {/* <p className="lead">
         <i className="fas fa-user"></i>Log In

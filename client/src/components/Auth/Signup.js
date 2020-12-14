@@ -49,8 +49,8 @@ const Signup = () => {
 
     return (
         <div className="signContainer">
-            <h1 className="large "><i className="fas fa-user"></i> Sign Up</h1>
-            <p className="lead">Create Your Account</p>
+            <h1><i className="fas fa-user"></i> Sign Up</h1>
+            <p>Create Your Account</p>
             <form onSubmit={e => onSubmit(e)}>
 
                 <input type="text"
