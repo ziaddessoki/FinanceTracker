@@ -35,6 +35,9 @@ body {
   height: 650px;
   /* overflow: hidden; */
 }
+.signContainer{
+  margin: 50px auto;
+}
 .accContainer {
   margin: 20px auto;
   /* width: 400px; */

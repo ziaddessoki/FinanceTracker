@@ -21,7 +21,7 @@ const Login = () => {
     //     return <Redirect to="/account" />;
     // }
     return (
-        <Fragment>
+        <div className="signContainer">
             <h1>
                 <i className="fas fa-user"></i> Sign in
       </h1>
@@ -53,7 +53,7 @@ const Login = () => {
                 Don't have an account?
                 <Link to="/signup"> Sign Up</Link>
             </p>
-        </Fragment>
+        </div>
     )
 }
 
