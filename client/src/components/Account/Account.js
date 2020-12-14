@@ -7,14 +7,14 @@ import NewTransactions from './NewTransactions'
 
 export const Account = () => {
     return (
-        <div>
-            <div className="container">
-                <Balance />
-                <IncomeExpense />
-                <History />
-                <NewTransactions />
-            </div>
+
+        <div className="accContainer">
+            <Balance />
+            <IncomeExpense />
+            <History />
+            <NewTransactions />
         </div>
+
     )
 }
 

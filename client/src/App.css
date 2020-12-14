@@ -30,8 +30,17 @@ body {
 }
 
 .container {
-  margin: 30px auto;
+  margin: 30px 20px;
   width: 400px;
+  height: 650px;
+  /* overflow: hidden; */
+}
+.accContainer {
+  margin: 20px auto;
+  /* width: 400px; */
+  display: block;
+  height: 90%;
+  overflow: scroll;
 }
 
 h1 {
@@ -147,21 +156,22 @@ input[type="password"] {
 
 .incomeBtn{
   background-color: rgb(4, 160, 4);
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  right: 50%;
-  
+  right: 50%; */
+  float:left;
 }
 .expenseBtn{
   background-color: red;
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  left: 50%;
+  left: 50%; */
+  float:right;
 }
 
-.buttons{
+/* .buttons{
   position: relative;
-}
+} */
 
 .btn:focus,
 .delete-btn:focus {

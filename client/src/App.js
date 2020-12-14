@@ -12,12 +12,14 @@ function App() {
 
     <GlobalProvider>
       <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/account" component={Account} />
-          <Route exact path="/signup" component={Signup} />
-        </Switch>
+        <div className="container">
+          <Header />
+          <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/account" component={Account} />
+            <Route exact path="/signup" component={Signup} />
+          </Switch>
+        </div>
       </Router>
     </GlobalProvider>
 

@@ -28,7 +28,7 @@ const Login = () => {
             {/* <p className="lead">
         <i className="fas fa-user"></i>Log In
       </p> */}
-            <form className="form" onSubmit={(e) => onSubmit(e)}>
+            <form onSubmit={(e) => onSubmit(e)}>
 
                 <input
                     type="email"

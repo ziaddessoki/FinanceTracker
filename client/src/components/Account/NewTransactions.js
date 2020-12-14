@@ -35,11 +35,11 @@ const NewTransactions = () => {
           <label htmlFor="amount">Amount</label>
           <input type="number" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Enter amount..." />
         </div>
-        {/* <button className="btn">Add transaction</button> */}
-        <div className="buttons">
-          <button className="btn incomeBtn"><i className="fas fa-plus-circle"></i> Income</button>
-          <button className="btn expenseBtn" onClick={() => amount = -amount}><i className="fas fa-minus-circle"></i> Expense</button>
-        </div>
+
+        <button className="btn incomeBtn"><i className="fas fa-plus-circle"></i> Income</button>
+        <button className="btn expenseBtn" onClick={() => amount = -amount}><i className="fas fa-minus-circle"></i> Expense</button>
+        <div className="clearfix"></div>
+
 
       </form>
     </div>
