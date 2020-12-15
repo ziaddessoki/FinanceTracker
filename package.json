@@ -1,0 +1,25 @@
+{
+  "name": "financetracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ziaddessoki/FinanceTracker.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ziaddessoki/FinanceTracker/issues"
+  },
+  "homepage": "https://github.com/ziaddessoki/FinanceTracker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.8.0",
+    "firebase-tools": "^8.19.0",
+    "uuid": "^8.3.2"
+  }
+}

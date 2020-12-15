@@ -3,12 +3,21 @@ import AppReducer from './AppReducer'
 
 //initial State
 const initialState = {
+    user: {
+        id: null,
+        name: "",
+        email: "",
+        Password: null,
+        token: ""
+    },
     transactions: [
         { id: 1, text: 'Flower', amount: -20 },
         { id: 2, text: 'Salary', amount: 300 },
         { id: 3, text: 'Book', amount: -10 },
         { id: 4, text: 'Camera', amount: 150 }
-    ]
+    ],
+    loading: false,
+    isAuthenticated: false
 };
 
 //create Context
