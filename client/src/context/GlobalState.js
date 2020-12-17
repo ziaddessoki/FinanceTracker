@@ -39,6 +39,7 @@ export const GlobalProvider = ({ children }) => {
             type: "AUTH_START"
         }
     }
+    //add token and user ID to state
     const authSuccess = (token, userId) => {
         return {
             type: "AUTH_SUCCESS",
@@ -46,6 +47,8 @@ export const GlobalProvider = ({ children }) => {
             userId: userId
         }
     }
+
+
     //Sign in or Sign Up
     const auth = (email, password, isSignUp) => {
         // dispatch(authStart());

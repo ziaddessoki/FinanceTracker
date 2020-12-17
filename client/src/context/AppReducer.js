@@ -4,12 +4,14 @@ const AppReducer = (state, action) => {
             return {
                 ...state,
                 loading: true,
-                user: { ...state.user, error: "tee" }
+                user: { ...state.user, error: null }
             }
         case "AUTH_SUCCESS":
             return {
                 ...state,
-                user: { ...state.user, userId: action.payload.userId, token: action.payload.token }
+                user: { ...state.user, userId: action.payload.userId, token: action.payload.token, error: null },
+                loading: false,
+
             }
         case "DELETE_TRANSACTION":
             return {
