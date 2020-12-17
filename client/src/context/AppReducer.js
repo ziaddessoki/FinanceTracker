@@ -6,6 +6,11 @@ const AppReducer = (state, action) => {
                 loading: true,
                 user: { ...state.user, error: "tee" }
             }
+        case "AUTH_SUCCESS":
+            return {
+                ...state,
+                user: { ...state.user, userId: action.payload.userId, token: action.payload.token }
+            }
         case "DELETE_TRANSACTION":
             return {
                 ...state,

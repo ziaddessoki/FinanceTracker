@@ -5,7 +5,7 @@ import axios from "axios"
 //initial State
 const initialState = {
     user: {
-        id: null,
+        userId: null,
         name: "",
         email: "",
         Password: null,
@@ -33,42 +33,51 @@ export const GlobalProvider = ({ children }) => {
 
     //Actions
     //Auth Actions
+    //Reset error and start loading
     const authStart = () => {
         return {
             type: "AUTH_START"
         }
     }
+    const authSuccess = (token, userId) => {
+        return {
+            type: "AUTH_SUCCESS",
+            token: token,
+            userId: userId
+        }
+    }
+    //Sign in or Sign Up
     const auth = (email, password, isSignUp) => {
-        dispatch(authStart());
-        // return dispatch => {
-        //     dispatch(authStart());
-        // const authData ={
-        //     email:email,
-        //     password:password,
-        //     returnSecureToken:true
-        // }
-        // let url= 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
-        // if(!isSignUp){
-        //     url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
-        // }
-        // axios.post(url, authData)
-        // .then(res =>{
-        //     console.log(res);
-        //     //we doing the local storage so it wont sing up with refreshing the page
-        //     localStorage.setItem('token',res.data.idToken);
-        //     const expirationDate =new Date(new Date().getTime() + res.data.expiresIn * 1000);
-        //     localStorage.setItem('expirationDate',expirationDate);
-        //     localStorage.setItem('userId',res.data.localId);
-        //     dispatch(authSuccess(res.data.idToken,res.data.localId))
-        //     dispatch(checkAuthTimeout(res.data.expiresIn))
-        // })
-        // .catch(err=>{
-        //     console.log(err.response.data.error.message);
-        //     dispatch(authFail(err.response.data.error))
-        // }
+        // dispatch(authStart());
+        return dispatch => {
+            dispatch(authStart());
+            const authData = {
+                email: email,
+                password: password,
+                returnSecureToken: true
+            }
+            let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
+            if (!isSignUp) {
+                url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
+            }
+            axios.post(url, authData)
+                .then(res => {
+                    console.log(res);
+                    //we doing the local storage so it wont sing up with refreshing the page
+                    localStorage.setItem('token', res.data.idToken);
+                    const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
+                    localStorage.setItem('expirationDate', expirationDate);
+                    localStorage.setItem('userId', res.data.localId);
+                    dispatch(authSuccess(res.data.idToken, res.data.localId))
+                    dispatch(checkAuthTimeout(res.data.expiresIn))
+                })
+                .catch(err => {
+                    console.log(err.response.data.error.message);
+                    dispatch(authFail(err.response.data.error))
+                }
 
-        // )
-        // }
+                )
+        }
     }
 
 
