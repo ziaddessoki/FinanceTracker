@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from "react-router-dom";
+import { GlobalContext } from '../../context/GlobalState';
 
 const Login = () => {
+    const { auth } = useContext(GlobalContext)
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -14,6 +16,8 @@ const Login = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        auth();
+        console.log("hitting")
         // props.login(email, password);
     };
     //Redirect if logged in
