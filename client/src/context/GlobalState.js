@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer'
-import axios from 'axios'
+import axios from "axios"
 
 //initial State
 const initialState = {
@@ -38,7 +38,7 @@ export const GlobalProvider = ({ children }) => {
             type: "AUTH_START"
         }
     }
-    const auth = () => {
+    const auth = (email, password, isSignUp) => {
         dispatch(authStart());
         // return dispatch => {
         //     dispatch(authStart());
@@ -47,9 +47,9 @@ export const GlobalProvider = ({ children }) => {
         //     password:password,
         //     returnSecureToken:true
         // }
-        // let url= 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAc6ycbLbVCC2QibSM9aom7QH90MfcFAo0'
+        // let url= 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
         // if(!isSignUp){
-        //     url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAc6ycbLbVCC2QibSM9aom7QH90MfcFAo0'
+        //     url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
         // }
         // axios.post(url, authData)
         // .then(res =>{
@@ -70,6 +70,11 @@ export const GlobalProvider = ({ children }) => {
         // )
         // }
     }
+
+
+
+
+
     //Transactions actions
     function deleteTransaction(id) {
         dispatch({

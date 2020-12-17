@@ -3,7 +3,8 @@ const AppReducer = (state, action) => {
         case "AUTH_START":
             return {
                 ...state,
-                loading: true
+                loading: true,
+                user: { ...state.user, error: "tee" }
             }
         case "DELETE_TRANSACTION":
             return {
