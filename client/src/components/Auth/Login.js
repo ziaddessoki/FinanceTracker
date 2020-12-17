@@ -16,8 +16,7 @@ const Login = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        auth();
-        console.log("hitting")
+        auth(email, password, false);
         // props.login(email, password);
     };
     //Redirect if logged in

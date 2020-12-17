@@ -6,18 +6,30 @@ const AppReducer = (state, action) => {
                 loading: true,
                 user: { ...state.user, error: null }
             }
+
         case "AUTH_SUCCESS":
             return {
                 ...state,
-                user: { ...state.user, userId: action.payload.userId, token: action.payload.token, error: null },
+                user: { ...state.user, userId: action.userId, token: action.token, error: null },
                 loading: false,
-
+            }
+        case "AUTH_FAIL":
+            return {
+                ...state,
+                loading: false,
+                user: { ...state.user, error: action.error }
+            }
+        case "AUTH_LOGOUT":
+            return {
+                ...state,
+                user: { ...state.user, userId: null, token: null, error: null },
             }
         case "DELETE_TRANSACTION":
             return {
                 ...state,
                 transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
             }
+
         case "ADD_TRANSACTION":
             return {
                 ...state,
