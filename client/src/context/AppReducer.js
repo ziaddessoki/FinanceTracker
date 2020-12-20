@@ -12,6 +12,7 @@ const AppReducer = (state, action) => {
                 ...state,
                 user: { ...state.user, userId: action.userId, token: action.token, error: null },
                 loading: false,
+                isAuthenticated: true,
             }
         case "AUTH_FAIL":
             return {

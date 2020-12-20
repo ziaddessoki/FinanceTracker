@@ -44,7 +44,8 @@ export const GlobalProvider = ({ children }) => {
         return {
             type: "AUTH_SUCCESS",
             token: token,
-            userId: userId
+            userId: userId,
+
         }
     }
 

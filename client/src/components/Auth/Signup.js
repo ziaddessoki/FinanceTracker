@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { GlobalContext } from '../../context/GlobalState';
 
 const Signup = () => {
 
+    const { auth } = useContext(GlobalContext)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -13,34 +15,37 @@ const Signup = () => {
     //destructor
     const { name, email, password, password2 } = formData
 
+    const errMessage = null
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
     const onSubmit = async e => {
         e.preventDefault();
-        // if (password !== password2) {
-        //     props.setAlert("Password Don't Match", "danger")
-        // } else {
-        //     props.register({ name, email, password })
-        //create a new user object to be the body
-        // const newUser = {
-        //     name: name,
-        //     email: email,
-        //     password: password,
-        // }
-        // try {
-        //     const config = {
-        //         headers: {
-        //             "content-type": "application/json"
-        //         }
-        //     }
-        //     const body = JSON.stringify(newUser)
-        //     const res = await axios.post("/api/users", body, config);
-        //     console.log(res.data)
-        // } catch (err) {
-        //     console.log(err.response.data)
-        // }
-        // }
+
+        if (password !== password2) {
+            errMessage = <p>Passwords Don't Match!</p>
+            //     props.setAlert("Password Don't Match", "danger")
+        } else {
+            auth(email, password, true);
+            //create a new user object to be the body
+            // const newUser = {
+            //     name: name,
+            //     email: email,
+            //     password: password,
+            // }
+            // try {
+            //     const config = {
+            //         headers: {
+            //             "content-type": "application/json"
+            //         }
+            //     }
+            //     const body = JSON.stringify(newUser)
+            //     const res = await axios.post("/api/users", body, config);
+            //     console.log(res.data)
+            // } catch (err) {
+            //     console.log(err.response.data)
+            // }
+        }
     }
 
     // if (props.isAuthenticated) {
@@ -93,6 +98,8 @@ const Signup = () => {
                     value={password2}
                     onChange={e => onChange(e)}
                 />
+
+                {errMessage}
 
                 <input type="submit" className="btn btn-success" value="Register" />
             </form>
