@@ -24,6 +24,7 @@ const AppReducer = (state, action) => {
             return {
                 ...state,
                 user: { ...state.user, userId: null, token: null, error: null },
+                isAuthenticated: false,
             }
         case "DELETE_TRANSACTION":
             return {

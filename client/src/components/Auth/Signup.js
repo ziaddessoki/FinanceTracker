@@ -1,21 +1,22 @@
-import React, { Fragment, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { Fragment, useContext, useState } from 'react'
+import { Link, Redirect } from 'react-router-dom'
 import { GlobalContext } from '../../context/GlobalState';
 
 const Signup = () => {
 
-    const { auth } = useContext(GlobalContext)
+    const { auth, isAuthenticated } = useContext(GlobalContext)
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
-        password2: ''
+        password2: '',
+        errMessage: false,
     });
     //destructor
-    const { name, email, password, password2 } = formData
+    const { name, email, password, password2, errMessage } = formData
 
-    const errMessage = null
+
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
@@ -23,7 +24,9 @@ const Signup = () => {
         e.preventDefault();
 
         if (password !== password2) {
-            errMessage = <p>Passwords Don't Match!</p>
+            console.log("hit hit")
+            setFormData({ ...formData, errMessage: true })
+            console.log(formData)
             //     props.setAlert("Password Don't Match", "danger")
         } else {
             auth(email, password, true);
@@ -48,9 +51,9 @@ const Signup = () => {
         }
     }
 
-    // if (props.isAuthenticated) {
-    //     return <Redirect to='/dashboard' />
-    // }
+    if (isAuthenticated) {
+        return <Redirect to='/account' />
+    }
 
     return (
         <div className="signContainer">
@@ -63,7 +66,7 @@ const Signup = () => {
                     name="name"
                     value={name}
                     onChange={e => onChange(e)}
-                // required 
+                    required
                 />
 
 
@@ -72,7 +75,7 @@ const Signup = () => {
                     name="email"
                     value={email}
                     onChange={e => onChange(e)}
-                // required  
+                    required
                 />
                 <small className="form-text"
                 >This site uses Gravatar so if you want a profile image, use a
@@ -99,7 +102,8 @@ const Signup = () => {
                     onChange={e => onChange(e)}
                 />
 
-                {errMessage}
+                <p style={{ color: "red", fontWeight: "bold", margin: "0px" }}>
+                    {errMessage ? "Passwords Don't Match!" : null}</p>
 
                 <input type="submit" className="btn btn-success" value="Register" />
             </form>
@@ -112,4 +116,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Signup;

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { GlobalContext } from '../../context/GlobalState';
 
 const Login = () => {
-    const { auth } = useContext(GlobalContext)
+    const { auth, isAuthenticated } = useContext(GlobalContext)
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -20,9 +20,9 @@ const Login = () => {
         // props.login(email, password);
     };
     //Redirect if logged in
-    // if (props.isAuthenticated) {
-    //     return <Redirect to="/account" />;
-    // }
+    if (isAuthenticated) {
+        return <Redirect to="/account" />;
+    }
     return (
         <div className="signContainer">
             <h1>

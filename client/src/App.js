@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Account from './components/Account/Account'
 import Login from './components/Auth/Login'
 import Signup from './components/Auth/Signup'
+import Landing from './components/Landing'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <div className="container">
           <Header />
           <Switch>
+            <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/account" component={Account} />
             <Route exact path="/signup" component={Signup} />
