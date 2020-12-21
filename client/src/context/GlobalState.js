@@ -20,8 +20,6 @@ const initialState = {
     ],
     loading: false,
     isAuthenticated: false,
-    isSignup: true,
-
 };
 
 //create Context
@@ -60,9 +58,9 @@ export const GlobalProvider = ({ children }) => {
         localStorage.removeItem('token');
         localStorage.removeItem('expirationDate');
         localStorage.removeItem('userId');
-        return {
+        dispatch({
             type: "AUTH_LOGOUT"
-        }
+        })
     }
 
     const checkAuthTimeout = (expirationTime) => {

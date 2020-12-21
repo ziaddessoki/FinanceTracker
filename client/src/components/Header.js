@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useContext } from 'react'
 import { Link } from "react-router-dom"
 import { Dropdown } from 'react-bootstrap'
 import { GlobalContext } from '../context/GlobalState';
@@ -18,7 +18,7 @@ export const Header = () => {
                     <Dropdown.Item ><Link to="/login">Log In</Link></Dropdown.Item>
                     <Dropdown.Item ><Link to="/signup">Sign Up</Link></Dropdown.Item>
                     <Dropdown.Item ><Link to="/account">Account</Link></Dropdown.Item>
-                    <Dropdown.Item onClick={() => logout()}><Link to="/">Log out</Link></Dropdown.Item>
+                    <Dropdown.Item ><Link onClick={() => logout()} to="/">Log out</Link></Dropdown.Item>
 
                 </Dropdown.Menu>
             </Dropdown>

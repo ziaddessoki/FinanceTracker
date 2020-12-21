@@ -2,11 +2,10 @@ import React from 'react'
 
 const Landing = () => {
     return (
-        <div>
+        <p>
             HomePage
-        </div>
+        </p>
     )
 }
 
 export default Landing
-HomePage
