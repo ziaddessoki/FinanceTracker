@@ -15,10 +15,19 @@ export const Header = () => {
 
                 <Dropdown.Menu align="right">
                     {/* add Global state, signup and login will disabler  */}
-                    <Dropdown.Item ><Link to="/login">Log In</Link></Dropdown.Item>
-                    <Dropdown.Item ><Link to="/signup">Sign Up</Link></Dropdown.Item>
-                    <Dropdown.Item ><Link to="/account">Account</Link></Dropdown.Item>
-                    <Dropdown.Item ><Link onClick={() => logout()} to="/">Log out</Link></Dropdown.Item>
+                    {!isAuthenticated ?
+                        <div>
+                            <Dropdown.Item ><Link to="/">Home</Link></Dropdown.Item>
+                            <Dropdown.Item ><Link to="/login">Log In</Link></Dropdown.Item>
+                            <Dropdown.Item ><Link to="/signup">Sign Up</Link></Dropdown.Item>
+                        </div> :
+                        <div>
+                            <Dropdown.Item ><Link to="/">Home</Link></Dropdown.Item>
+                            <Dropdown.Item ><Link to="/account">Account</Link></Dropdown.Item>
+                            <Dropdown.Item ><Link onClick={() => logout()} to="/">Log out</Link></Dropdown.Item>
+                        </div>}
+
+
 
                 </Dropdown.Menu>
             </Dropdown>
