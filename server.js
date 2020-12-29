@@ -10,7 +10,7 @@ connectDB();
 
 const app = express();
 
-app.use('/api/v1/transactions', require('./routes/transactions'))
+app.use('/api/v1/user', require('./routes/users'))
 
 const PORT = process.env.PORT || 5000;
 

@@ -1,20 +1,20 @@
 const firebase = require("firebase");
+const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-
-
-        firebase.initializeApp({
-            apiKey: process.env.APIKEY,
-            authDomain: process.env.AUTHADMIN,
-            databaseURL: process.env.DATABASEURL,
-            storageBucket: process.env.STORAGEBUCKET
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            useUnifiedTopology: true,
         })
-
-        const conn = await firebase.database()
-
-        console.log(`Firebase DATABASE Connected: ${conn.repoInternal_.repoInfo_.host}`.cyan.underline.bold)
-        console.log(conn.repoInternal_.repoInfo_)
+        // const x = 'mongodb+srv://ziad:zee123@cluster0.j89oq.mongodb.net/financeTracker'
+        // const conn = await mongoose.connect(x, {
+        //     userNewUrlParser: true,
+        //     userCreateIndex: true,
+        //     userUnifiedTopology: true,
+        // })
+        console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.bold)
 
     } catch (err) {
         console.log(process.env.DATABASE)
