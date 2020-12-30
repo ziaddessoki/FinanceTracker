@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const User = require('../models/users')
+const User = require('../models/user')
 
 // const { getTransactions, addTransactions, deleteTransactions } = require('../routes/transactions')
 
@@ -15,12 +15,20 @@ router.get("/", async (req, res) => {
         //since its a protected route n we use the token that has the ID
         //in middleware we set the req.user to the user w/token
         // not returning password in json
-        //   const user = await User.findById(req.user.id).select("-password");
-        //   res.json(user);
-        res.send('Get users')
+
+        const users = await User.find()
+        // res.json(users)
+        return res.status(200).json({
+            success: true,
+            count: users.length,
+            data: users
+        })
+
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
+        return res.status(500).json({
+            success: false,
+            error: "Server Error"
+        })
     }
 });
 //@desc Get user by id
@@ -32,9 +40,14 @@ router.get("/:id", async (req, res) => {
         //since its a protected route n we use the token that has the ID
         //in middleware we set the req.user to the user w/token
         // not returning password in json
-        //   const user = await User.findById(req.user.id).select("-password");
-        //   res.json(user);
-        res.send('Get user')
+        // const user = await User.findById(req.user.id);
+
+        const user = await User.findById(req.params.id);
+        return res.status(200).json({
+            success: true,
+            data: user
+        })
+        // res.json(user);
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");
@@ -46,11 +59,27 @@ router.get("/:id", async (req, res) => {
 //@access Public
 //to use the middleware just add the file as a second paramter and route will be protected
 router.post("/", async (req, res) => {
+
     try {
-        res.send('Post User')
+        const { name, email, transactions } = req.body
+        const user = await User.create(req.body)
+        return res.status(201).json({
+            success: true,
+            data: user
+        })
     } catch (err) {
-        console.error(err.message);
-        res.status(500).send("Server Error");
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(val => val.message);
+            return res.status(400).json({
+                success: false,
+                error: messages
+            })
+        } else {
+            return res.status(400).json({
+                success: false,
+                error: "Server Error"
+            })
+        }
     }
 });
 
@@ -60,7 +89,19 @@ router.post("/", async (req, res) => {
 //@access Public
 router.delete("/:id", async (req, res) => {
     try {
-        res.send('delete User')
+        const user = await User.findById(req.params.id);
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                error: "No User Found"
+            })
+        }
+        await user.remove()
+        return res.status(200).json({
+            success: true,
+            data: "User Removed"
+        })
     } catch (err) {
         console.error(err.message);
         res.status(500).send("Server Error");

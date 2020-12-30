@@ -5,12 +5,12 @@ const TransactionSchema = new mongoose.Schema({
     text: {
         type: String,
         trim: true,
-        required: [true, 'Please add your text']
+
     },
     amount: {
-        type: String,
+        type: Number,
         trim: true,
-        required: [true, 'Please add your Email']
+
     },
     createdAt: {
         type: Date,

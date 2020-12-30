@@ -8,12 +8,7 @@ const connectDB = async () => {
             useCreateIndex: true,
             useUnifiedTopology: true,
         })
-        // const x = 'mongodb+srv://ziad:zee123@cluster0.j89oq.mongodb.net/financeTracker'
-        // const conn = await mongoose.connect(x, {
-        //     userNewUrlParser: true,
-        //     userCreateIndex: true,
-        //     userUnifiedTopology: true,
-        // })
+
         console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.bold)
 
     } catch (err) {

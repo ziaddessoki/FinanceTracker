@@ -9,6 +9,8 @@ connectDB();
 
 
 const app = express();
+//to be able to use body parser
+app.use(express.json())
 
 app.use('/api/v1/user', require('./routes/users'))
 
