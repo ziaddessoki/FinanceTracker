@@ -26,17 +26,18 @@ const AppReducer = (state, action) => {
                 user: { ...state.user, userId: null, token: null, error: null },
                 isAuthenticated: false,
             }
+        case "ADD_TRANSACTION":
+            return {
+                ...state,
+                transactions: [action.payload, ...state.transactions]
+            }
         case "DELETE_TRANSACTION":
             return {
                 ...state,
                 transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
             }
 
-        case "ADD_TRANSACTION":
-            return {
-                ...state,
-                transactions: [action.payload, ...state.transactions]
-            }
+
 
         default:
             return state;

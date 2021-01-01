@@ -6,6 +6,7 @@ import axios from "axios"
 const initialState = {
     user: {
         userId: null,
+        DbId: null,
         name: "",
         email: "",
         Password: null,
@@ -116,8 +117,8 @@ export const GlobalProvider = ({ children }) => {
             })
         } catch (err) {
             dispatch({
-                type: "GET_USER_ERR",
-                payload: err.response.data.error
+                type: "AUTH_FAIL",
+                error: err.response.data.error
             })
         }
     }
