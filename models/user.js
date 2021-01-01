@@ -32,7 +32,7 @@ const UserSchema = new mongoose.Schema({
     },
     transactions: {
         type: [TransactionSchema],
-
+        default: []
     }
 });
 

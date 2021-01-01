@@ -71,23 +71,24 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
-
     //Sign in or Sign Up
     const auth = (email, password, isSignUp) => {
         dispatch(authStart());
-        console.log("hitti again")
+
         const authData = {
             email: email,
             password: password,
             returnSecureToken: true
         }
+
         let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
         if (!isSignUp) {
             url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCBpvurK_316C6cGCx8npHkxYKpq3XLCrM'
         }
+
         axios.post(url, authData)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 //we doing the local storage so it wont sing up with refreshing the page
                 localStorage.setItem('token', res.data.idToken);
                 const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
@@ -97,13 +98,29 @@ export const GlobalProvider = ({ children }) => {
                 dispatch(checkAuthTimeout(res.data.expiresIn))
             })
             .catch(err => {
-                console.log(err.response.data.error);
+                // console.log(err.response.data.error);
                 dispatch(authFail(err.response.data.error.message))
             }
 
             )
     }
 
+    //get user from DB
+    const getUserFromDataBase = async (id) => {
+        try {
+            const res = await axios.get(`/api/v1/user/${id}`)
+
+            dispatch({
+                type: "GET_USER",
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: "GET_USER_ERR",
+                payload: err.response.data.error
+            })
+        }
+    }
 
 
 
