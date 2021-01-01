@@ -1,4 +1,3 @@
-const firebase = require("firebase");
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
