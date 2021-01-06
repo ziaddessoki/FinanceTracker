@@ -6,10 +6,9 @@ import axios from "axios"
 const initialState = {
     user: {
         userId: null,
-        DbId: null,
+        fbId: null,
         name: "",
         email: "",
-        Password: null,
         token: null,
         error: null,
     },
@@ -39,11 +38,11 @@ export const GlobalProvider = ({ children }) => {
         }
     }
     //add token and user ID to state
-    const authSuccess = (token, userId) => {
+    const authSuccess = (token, fbId) => {
         return {
             type: "AUTH_SUCCESS",
             token: token,
-            userId: userId,
+            fbId: fbId,
 
         }
     }
@@ -58,7 +57,7 @@ export const GlobalProvider = ({ children }) => {
     const logout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('expirationDate');
-        localStorage.removeItem('userId');
+        localStorage.removeItem('fbId');
         dispatch({
             type: "AUTH_LOGOUT"
         })
@@ -94,7 +93,7 @@ export const GlobalProvider = ({ children }) => {
                 localStorage.setItem('token', res.data.idToken);
                 const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
                 localStorage.setItem('expirationDate', expirationDate);
-                localStorage.setItem('userId', res.data.localId);
+                localStorage.setItem('fbId', res.data.localId);
                 dispatch(authSuccess(res.data.idToken, res.data.localId))
                 dispatch(checkAuthTimeout(res.data.expiresIn))
             })
@@ -107,7 +106,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     //get user from DB
-    const getUserFromDataBase = async (id) => {
+    const getUserDB = async (id) => {
         try {
             const res = await axios.get(`/api/v1/user/${id}`)
 
@@ -123,22 +122,97 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    //add user to DB
+    const addUserDB = async (newUser) => {
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const res = await axios.post("/api/v1/user", newUser, config)
 
 
+            dispatch({
+                type: "ADD_USER",
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: "AUTH_FAIL",
+                error: err.response.data.error
+            })
+        }
+    }
+
+    //delete user from DB
+    const deleteUserDB = async (id) => {
+        try {
+            const res = await axios.delete(`/api/v1/user/${id}`)
+
+            dispatch({
+                type: "DELETE_USER",
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: "AUTH_FAIL",
+                error: err.response.data.error
+            })
+        }
+    }
+
+    // Get all user's transaction 
+    const getTransactions = async (userId) => {
+        try {
+            const res = await axios.get(`/api/v1/transactions/${userId}`)
+
+            dispatch({
+                type: "GET_TRANSACTIONS",
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: "TRANSACTION_ERROR",
+                error: err.response.data.error
+            })
+        }
+    }
 
     //Transactions actions
-    function deleteTransaction(id) {
-        dispatch({
-            type: "DELETE_TRANSACTION",
-            payload: id
-        })
+    function deleteTransaction(userId, id) {
+        try {
+            const res = await axios.delete(`/api/v1/transactions/${userId}/${id}`)
+            dispatch({
+                type: "DELETE_TRANSACTION",
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: "TRANSACTION_ERROR",
+                error: err.response.data.error
+            })
+        }
     };
 
     function addTransaction(transaction) {
-        dispatch({
-            type: "ADD_TRANSACTION",
-            payload: transaction
-        })
+        try {
+            const config = {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            const res = await axios.post(`api/v1/transactions/${userId}`, transaction, config)
+            dispatch({
+                type: "ADD_TRANSACTION",
+                payload: res.data.data
+            })
+        } catch (err) {
+            dispatch({
+                type: "TRANSACTION_ERROR",
+                error: err.response.data.error
+            })
+        }
     }
 
 

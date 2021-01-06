@@ -1,5 +1,6 @@
 const AppReducer = (state, action) => {
-    switch (action.type) {
+    const { type, payload } = action;
+    switch (type) {
         case "AUTH_START":
             return {
                 ...state,
@@ -10,31 +11,61 @@ const AppReducer = (state, action) => {
         case "AUTH_SUCCESS":
             return {
                 ...state,
-                user: { ...state.user, userId: action.userId, token: action.token, error: null },
+                user: { ...state.user, fbId: action.fbId, token: action.token, error: null },
                 loading: false,
                 isAuthenticated: true,
             }
         case "AUTH_FAIL":
+        case "TRANSACTION_ERROR":
             return {
                 ...state,
                 loading: false,
                 user: { ...state.user, error: action.error }
             }
         case "AUTH_LOGOUT":
+        case "DELETE_USER":
             return {
                 ...state,
-                user: { ...state.user, userId: null, token: null, error: null },
+                user: { ...state.user, fbId: null, userId: null, token: null, error: null },
                 isAuthenticated: false,
             }
+        case "GET_USER":
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    userId: payload._id,
+                    fbId: payload.fbId,
+                    name: payload.name,
+                    email: payload.email
+                },
+                transactions: [payload.transactions, ...state.transactions]
+            }
+        case "ADD_USER":
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    userId: payload._id,
+                    fbId: payload.fbId,
+                    name: payload.name,
+                    email: payload.email
+                },
+
+            }
+        case "GET_TRANSACTIONS":
         case "ADD_TRANSACTION":
             return {
                 ...state,
-                transactions: [action.payload, ...state.transactions]
+                //not sure if it will duplicate that data, when adding res comes with all transaction
+                transactions: [action.payload, ...state.transactions],
+                loading: false
             }
         case "DELETE_TRANSACTION":
             return {
                 ...state,
-                transactions: state.transactions.filter(transaction => transaction.id !== action.payload)
+                transactions: state.transactions.filter(transaction => transaction.id !== action.payload),
+                loading: false,
             }
 
 
