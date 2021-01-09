@@ -31,18 +31,18 @@ router.get("/", async (req, res) => {
         })
     }
 });
-//@desc Get user by id
+//@desc Get user by Firebase id
 //@route GET /api/v1/user/:id
 //@access Public
 //to use the middleware just add the file as a second paramter and route will be protected
-router.get("/:id", async (req, res) => {
+router.get("/:fbId", async (req, res) => {
     try {
         //since its a protected route n we use the token that has the ID
         //in middleware we set the req.user to the user w/token
         // not returning password in json
         // const user = await User.findById(req.user.id);
 
-        const user = await User.findById(req.params.id);
+        const user = await User.findById({ fbId: req.params.fbID });
         return res.status(200).json({
             success: true,
             data: user

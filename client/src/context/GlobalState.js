@@ -94,8 +94,9 @@ export const GlobalProvider = ({ children }) => {
                 const expirationDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('fbId', res.data.localId);
-                dispatch(authSuccess(res.data.idToken, res.data.localId))
-                dispatch(checkAuthTimeout(res.data.expiresIn))
+                dispatch(authSuccess(res.data.idToken, res.data.localId));
+                dispatch(checkAuthTimeout(res.data.expiresIn));
+                // initialState.user.fbId = res.data.localId
             })
             .catch(err => {
                 // console.log(err.response.data.error);
@@ -180,7 +181,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     //Transactions actions
-    function deleteTransaction(userId, id) {
+    const deleteTransaction = async (userId, id) => {
         try {
             const res = await axios.delete(`/api/v1/transactions/${userId}/${id}`)
             dispatch({
@@ -195,7 +196,7 @@ export const GlobalProvider = ({ children }) => {
         }
     };
 
-    function addTransaction(transaction) {
+    const addTransaction = async (userId, transaction) => {
         try {
             const config = {
                 headers: {
@@ -217,11 +218,16 @@ export const GlobalProvider = ({ children }) => {
 
 
     return (<GlobalContext.Provider value={{
+        user: state.user,
+        transactions: state.transactions,
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
-        transactions: state.transactions,
         auth,
         logout,
+        getUserDB,
+        addUserDB,
+        deleteUserDB,
+        getTransactions,
         deleteTransaction,
         addTransaction,
 

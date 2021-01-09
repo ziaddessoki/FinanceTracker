@@ -26,7 +26,12 @@ const AppReducer = (state, action) => {
         case "DELETE_USER":
             return {
                 ...state,
-                user: { ...state.user, fbId: null, userId: null, token: null, error: null },
+                user: {
+                    ...state.user, fbId: null,
+                    name: null,
+                    email: null,
+                    userId: null, token: null, error: null
+                },
                 isAuthenticated: false,
             }
         case "GET_USER":

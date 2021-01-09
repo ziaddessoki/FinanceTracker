@@ -1,10 +1,10 @@
-import React, { Fragment, useContext, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom'
 import { GlobalContext } from '../../context/GlobalState';
 
 const Signup = () => {
 
-    const { auth, isAuthenticated } = useContext(GlobalContext)
+    const { auth, addUserDB, isAuthenticated } = useContext(GlobalContext)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -20,22 +20,45 @@ const Signup = () => {
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value })
 
+
     const onSubmit = async e => {
         e.preventDefault();
 
         if (password !== password2) {
-            console.log("hit hit")
+
             setFormData({ ...formData, errMessage: true })
-            console.log(formData)
+
             //     props.setAlert("Password Don't Match", "danger")
         } else {
             auth(email, password, true);
             //create a new user object to be the body
+            // let fbId = localStorage.getItem("fbId")
+            // console.log(fbId)
+
+
             // const newUser = {
             //     name: name,
             //     email: email,
-            //     password: password,
+            //     fbId: fbId
             // }
+            // setTimeout(addUserDB, 2000, newUser)
+
+            const check = () => {
+                if (localStorage.getItem('fbId') == null) {
+                    setTimeout(check, 0);
+                } else {
+                    let fbId = localStorage.getItem("fbId")
+                    const newUser = {
+                        name: name,
+                        email: email,
+                        fbId: fbId
+                    }
+                    addUserDB(newUser)
+                }
+            }
+
+            setTimeout(check, 0);
+
             // try {
             //     const config = {
             //         headers: {

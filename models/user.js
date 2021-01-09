@@ -30,6 +30,11 @@ const UserSchema = new mongoose.Schema({
         trim: true,
         required: [true, 'Please add your Email']
     },
+    fbId: {
+        type: String,
+        trim: true,
+        // required: [true, 'Please add your Email']
+    },
     transactions: {
         type: [TransactionSchema],
         default: []
