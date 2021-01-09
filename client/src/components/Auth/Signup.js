@@ -30,19 +30,10 @@ const Signup = () => {
 
             //     props.setAlert("Password Don't Match", "danger")
         } else {
+            // Authenticate with Firebase
             auth(email, password, true);
-            //create a new user object to be the body
-            // let fbId = localStorage.getItem("fbId")
-            // console.log(fbId)
 
-
-            // const newUser = {
-            //     name: name,
-            //     email: email,
-            //     fbId: fbId
-            // }
-            // setTimeout(addUserDB, 2000, newUser)
-
+            // check Firebase return and Firebase ID save to localStorage to add user Info to DB
             const check = () => {
                 if (localStorage.getItem('fbId') == null) {
                     setTimeout(check, 0);
@@ -58,19 +49,6 @@ const Signup = () => {
             }
 
             setTimeout(check, 0);
-
-            // try {
-            //     const config = {
-            //         headers: {
-            //             "content-type": "application/json"
-            //         }
-            //     }
-            //     const body = JSON.stringify(newUser)
-            //     const res = await axios.post("/api/users", body, config);
-            //     console.log(res.data)
-            // } catch (err) {
-            //     console.log(err.response.data)
-            // }
         }
     }
 

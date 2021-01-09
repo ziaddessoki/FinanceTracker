@@ -42,7 +42,7 @@ router.get("/:fbId", async (req, res) => {
         // not returning password in json
         // const user = await User.findById(req.user.id);
 
-        const user = await User.findById({ fbId: req.params.fbID });
+        const user = await User.findOne({ fbId: req.params.fbId });
         return res.status(200).json({
             success: true,
             data: user

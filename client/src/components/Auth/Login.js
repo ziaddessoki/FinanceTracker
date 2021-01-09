@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import { GlobalContext } from '../../context/GlobalState';
 
 const Login = () => {
-    const { auth, isAuthenticated } = useContext(GlobalContext)
+    const { auth, getUserDB, isAuthenticated } = useContext(GlobalContext)
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -17,6 +17,7 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         auth(email, password, false);
+        getUserDB(localStorage.getItem("fbId"))
         // props.login(email, password);
     };
     //Redirect if logged in
