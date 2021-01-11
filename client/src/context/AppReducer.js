@@ -30,8 +30,9 @@ const AppReducer = (state, action) => {
                     ...state.user, fbId: null,
                     name: null,
                     email: null,
-                    userId: null, token: null, error: null
+                    userId: null, token: null, error: null,
                 },
+                transactions: [],
                 isAuthenticated: false,
             }
         case "GET_USER":
@@ -44,7 +45,9 @@ const AppReducer = (state, action) => {
                     name: payload.name,
                     email: payload.email
                 },
-                transactions: [payload.transactions, ...state.transactions]
+                transactions: [...state.transactions, ...payload.transactions]
+                // transactions: [...state.transactions]
+                // transactions: payload.transaction
             }
         case "ADD_USER":
             return {

@@ -17,9 +17,23 @@ const Login = () => {
     const onSubmit = async (e) => {
         e.preventDefault();
         auth(email, password, false);
-        getUserDB(localStorage.getItem("fbId"))
-        // props.login(email, password);
+        setTimeout(check, 100);
+        // getUserDB(localStorage.getItem("fbId"))
     };
+
+    // check Firebase return and Firebase ID save to localStorage to add user Info to DB
+    const check = () => {
+        if (localStorage.getItem('fbId') == null) {
+            setTimeout(check, 0);
+        } else {
+            let fbId = localStorage.getItem("fbId")
+            getUserDB(fbId)
+        }
+    }
+
+
+
+
     //Redirect if logged in
     if (isAuthenticated) {
         return <Redirect to="/account" />;
