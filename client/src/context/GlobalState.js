@@ -186,6 +186,7 @@ export const GlobalProvider = ({ children }) => {
             const res = await axios.delete(`/api/v1/transactions/${userId}/${id}`)
             dispatch({
                 type: "DELETE_TRANSACTION",
+                id: id,
                 payload: res.data.data
             })
         } catch (err) {
