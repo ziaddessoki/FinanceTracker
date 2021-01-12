@@ -6,18 +6,18 @@ import { v4 as uuidv4 } from 'uuid';
 const NewTransactions = () => {
   const [text, setText] = useState('')
   let [amount, setAmount] = useState(0)
-  const { addTransaction } = useContext(GlobalContext);
+  const { addTransaction, user } = useContext(GlobalContext);
 
   const onSubmit = e => {
     e.preventDefault();
 
     const newTransaction = {
-      id: uuidv4(),
       text: text.charAt(0).toUpperCase() + text.slice(1),
       amount: parseFloat(amount)
     }
+    const userId = user.userId
 
-    addTransaction(newTransaction)
+    addTransaction(userId, newTransaction)
     setText('');
     setAmount(0)
     console.log(newTransaction)

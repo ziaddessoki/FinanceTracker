@@ -34,7 +34,7 @@ router.post("/:id", async (req, res) => {
         const { text, amount } = req.body
         const newTrans = { text, amount }
 
-        user.transactions.push(newTrans)
+        user.transactions.unshift(newTrans)
         await user.save()
         // res.json(users)
         return res.status(200).json({

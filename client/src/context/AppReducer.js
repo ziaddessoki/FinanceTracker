@@ -66,7 +66,8 @@ const AppReducer = (state, action) => {
             return {
                 ...state,
                 //not sure if it will duplicate that data, when adding res comes with all transaction
-                transactions: [action.payload, ...state.transactions],
+                // transactions: [action.payload, ...state.transactions],
+                transactions: action.payload,
                 loading: false
             }
         case "DELETE_TRANSACTION":
