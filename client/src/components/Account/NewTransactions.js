@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const NewTransactions = () => {
   const [text, setText] = useState('')
-  let [amount, setAmount] = useState(0)
+  let [amount, setAmount] = useState('')
   const { addTransaction, user } = useContext(GlobalContext);
 
   const onSubmit = e => {
@@ -19,7 +19,7 @@ const NewTransactions = () => {
 
     addTransaction(userId, newTransaction)
     setText('');
-    setAmount(0)
+    setAmount('')
     console.log(newTransaction)
   }
 
