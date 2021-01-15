@@ -2,6 +2,7 @@ import React, { Fragment, useContext } from 'react'
 import { Link } from "react-router-dom"
 import { Dropdown } from 'react-bootstrap'
 import { GlobalContext } from '../context/GlobalState';
+import logo from '../assets/logo.png'
 
 export const Header = () => {
     const { logout, isAuthenticated } = useContext(GlobalContext)
@@ -22,7 +23,11 @@ export const Header = () => {
 
 
             </nav>
-            <h2 className="title">Finance Tracker</h2>
+
+
+            <br />
+
+            <h2 className="title"><img src={logo} alt="logo" width="50px" height="40px" />Finance Tracker</h2>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" className="dropdownBtn">
                     <i className="fas fa-bars"></i>

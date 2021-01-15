@@ -11,8 +11,9 @@ export const Account = () => {
         <div className="accContainer">
             <Balance />
             <IncomeExpense />
-            <History />
             <NewTransactions />
+            <History />
+
         </div>
 
     )

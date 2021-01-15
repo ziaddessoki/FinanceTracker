@@ -6,11 +6,11 @@
 
 * {
   box-sizing: border-box;
-  
+  color: #e1e1e1;
   
 }
 #root{
-  background-color: rgba(187, 187, 187, 0.746);
+  /* background-color: rgba(187, 187, 187, 0.746); */
 }
 
 body {
@@ -22,7 +22,8 @@ body {
   /* min-height: 100vh; */
   margin: 0;
   font-family: "Lato", sans-serif;
-  background:url(./assets/pexels-thiago-matos-3708554.jpg) no-repeat center center fixed ;
+  /* background:url(./assets/pexels-thiago-matos-3708554.jpg) no-repeat center center fixed ; */
+  background-color: #3b3b3b;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -48,7 +49,6 @@ body {
 }
 
 h1 {
-  color:black;
   letter-spacing: 1px;
   margin: 10px auto;
   font-size: 25px;
@@ -56,28 +56,41 @@ h1 {
 
 .title{
   float:left;
-  margin:10px 10px
+  margin:10px 10px;
+  margin-left: 0px;
 }
 
 h3 {
   border-bottom: 1px solid #bbb;
   padding-bottom: 10px;
-  margin: 40px 0 10px;
+  margin: 30px 0 10px;
 }
 
 h4 {
+  color: #3b3b3b;
   margin: 0;
   text-transform: uppercase;
 }
+h{
+  color: #3b3b3b;
+}
 
-a:link{
-  color:green;
+p{
+  margin-bottom: 0%;
+}
+a{
+  color: #e1e1e1;
   text-decoration: none;
 }
-a:visited {
+a:link{
+  text-decoration: none;
+  
+  text-decoration: none;
+}
+/* a:visited {
   text-decoration: none;
   color: #333;
-}
+} */
 
 a:hover {
   color:red;
@@ -85,16 +98,19 @@ a:hover {
 
 .toolBar ul{
   list-style-type: none;
+  padding: 0px;
   text-align: center;
 }
 
 .toolBar li{
-  margin: 10px 15px;
+  color: #e1e1e1;
+  margin: 10px 14px;
   display: inline;
 }
 
 .inc-exp-container {
   background-color: #fff;
+  border-radius: 20px;
   box-shadow: var(--box-shadow);
   padding: 20px;
   display: flex;
@@ -127,7 +143,7 @@ a:hover {
 
 label {
   display: inline-block;
-  margin: 10px 0;
+  margin: 0;
 }
 
 input[type="text"],
@@ -135,10 +151,11 @@ input[type="number"],
 input[type="email"],
 input[type="password"] {
   border: 1px solid #dedede;
-  border-radius: 2px;
+  border-radius: 15px;
   display: block;
   font-size: 16px;
-  padding: 10px;
+  margin: 10px auto;
+  padding: 8px;
   width: 100%;
 }
 
@@ -189,7 +206,7 @@ input[type="password"] {
 .list {
   list-style-type: none;
   padding: 0;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
   height: 230px;
   overflow-y:scroll;
  
@@ -197,6 +214,7 @@ input[type="password"] {
 
 .list li {
   background-color: #fff;
+  border-radius: 10px;
   box-shadow: var(--box-shadow);
   color: #333;
   display: flex;
@@ -218,11 +236,13 @@ input[type="password"] {
 .delete-btn {
   cursor: pointer;
   background-color: #e74c3c;
+  border-radius: 5px;
   border: 0;
   color: #fff;
   font-size: 20px;
   line-height: 20px;
-  padding: 2px 5px;
+  /* padding: 2px 5px; */
+  margin-right: 6px;
   position: absolute;
   top: 50%;
   left: 0;

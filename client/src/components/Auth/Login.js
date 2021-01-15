@@ -43,6 +43,7 @@ const Login = () => {
             <h1>
                 <i className="fas fa-user"></i> Sign In
       </h1>
+            <br />
             {/* <p className="lead">
         <i className="fas fa-user"></i>Log In
       </p> */}
@@ -55,7 +56,6 @@ const Login = () => {
                     value={email}
                     onChange={(e) => onChange(e)}
                 />
-                <br />
                 <input
                     type="password"
                     placeholder="Password"
