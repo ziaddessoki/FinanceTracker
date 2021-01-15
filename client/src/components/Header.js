@@ -7,6 +7,21 @@ export const Header = () => {
     const { logout, isAuthenticated } = useContext(GlobalContext)
     return (
         <Fragment>
+            <nav className="toolBar">
+                {!isAuthenticated ?
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/login">Log In</Link></li>
+                        <li><Link to="/signup">Sign Up</Link></li>
+                    </ul> :
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/account">Account</Link></li>
+                        <li><Link onClick={() => logout()} to="/">Log out</Link></li>
+                    </ul>}
+
+
+            </nav>
             <h2 className="title">Finance Tracker</h2>
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic" className="dropdownBtn">
@@ -17,14 +32,14 @@ export const Header = () => {
                     {/* add Global state, signup and login will disabler  */}
                     {!isAuthenticated ?
                         <div>
-                            <Dropdown.Item ><Link to="/">Home</Link></Dropdown.Item>
-                            <Dropdown.Item ><Link to="/login">Log In</Link></Dropdown.Item>
-                            <Dropdown.Item ><Link to="/signup">Sign Up</Link></Dropdown.Item>
+                            <Link className="dropdown-item" to="/">Home</Link>
+                            <Link className="dropdown-item" to="/login">Log In</Link>
+                            <Link className="dropdown-item" to="/signup">Sign Up</Link>
                         </div> :
                         <div>
-                            <Dropdown.Item ><Link to="/">Home</Link></Dropdown.Item>
-                            <Dropdown.Item ><Link to="/account">Account</Link></Dropdown.Item>
-                            <Dropdown.Item ><Link onClick={() => logout()} to="/">Log out</Link></Dropdown.Item>
+                            <Link className="dropdown-item" to="/">Home</Link>
+                            <Link className="dropdown-item" to="/account">Account</Link>
+                            <Link onClick={() => logout()} className="dropdown-item" to="/">Log out</Link>
                         </div>}
 
 

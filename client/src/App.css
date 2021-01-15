@@ -83,6 +83,16 @@ a:hover {
   color:red;
 }
 
+.toolBar ul{
+  list-style-type: none;
+  text-align: center;
+}
+
+.toolBar li{
+  margin: 10px 15px;
+  display: inline;
+}
+
 .inc-exp-container {
   background-color: #fff;
   box-shadow: var(--box-shadow);
@@ -146,6 +156,7 @@ input[type="password"] {
 }
 
 .dropdownBtn{
+  display: none;
   width: 10%;
   float: right;
 }
@@ -226,4 +237,15 @@ input[type="password"] {
 
 .clearfix{
   clear:both
+}
+
+
+/* @media only screen and (min-width: 768px) {
+
+} */
+
+@media (max-width: 960px) {
+  .toolBar ul     { display: none; }
+  .dropdownBtn {display: initial;}
+  /* nav select { display: inline-block; } */
 }

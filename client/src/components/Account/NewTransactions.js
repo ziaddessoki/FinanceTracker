@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { GlobalContext } from '../../context/GlobalState';
-import { v4 as uuidv4 } from 'uuid';
+
 
 
 const NewTransactions = () => {
