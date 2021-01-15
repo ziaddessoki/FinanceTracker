@@ -150,6 +150,7 @@ input[type="text"],
 input[type="number"],
 input[type="email"],
 input[type="password"] {
+  color: #333;
   border: 1px solid #dedede;
   border-radius: 15px;
   display: block;
