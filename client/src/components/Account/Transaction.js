@@ -8,7 +8,7 @@ const Transaction = ({ transaction }) => {
   return (
 
     <li className={transaction.amount < 0 ? "minus" : "plus"} >
-      {transaction.text} <h>{sign}${Math.abs(transaction.amount)}</h><button onClick={() => deleteTransaction(user.userId, transaction._id)} className="delete-btn">x</button>
+      {transaction.text} <h6>{sign}${Math.abs(transaction.amount)}</h6><button onClick={() => deleteTransaction(user.userId, transaction._id)} className="delete-btn">x</button>
     </li>
   )
 }

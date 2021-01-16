@@ -1,11 +1,15 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { Dropdown } from 'react-bootstrap'
 import { GlobalContext } from '../context/GlobalState';
 import logo from '../assets/logo.png'
 
 export const Header = () => {
-    const { logout, isAuthenticated } = useContext(GlobalContext)
+    const { logout, isAuthenticated, authCheckState } = useContext(GlobalContext)
+    useEffect(() => {
+        authCheckState();
+        //eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return (
         <Fragment>
             <nav className="toolBar">

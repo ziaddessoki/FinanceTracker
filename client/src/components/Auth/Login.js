@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { GlobalContext } from '../../context/GlobalState';
+import Notifi from "../Bootstrap/Alert"
 
 const Login = () => {
-    const { auth, getUserDB, isAuthenticated } = useContext(GlobalContext)
+    const { auth, getUserDB, isAuthenticated, user } = useContext(GlobalContext)
     const [formData, setFormData] = useState({
         email: "",
         password: ""
@@ -38,6 +39,9 @@ const Login = () => {
     if (isAuthenticated) {
         return <Redirect to="/account" />;
     }
+
+    const alert = user.error ? <Notifi err={user.error} /> : null
+
     return (
         <div className="signContainer">
             <h1>
@@ -47,6 +51,7 @@ const Login = () => {
             {/* <p className="lead">
         <i className="fas fa-user"></i>Log In
       </p> */}
+            {alert}
             <form onSubmit={(e) => onSubmit(e)}>
 
                 <input
