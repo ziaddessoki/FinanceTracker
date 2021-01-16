@@ -8,9 +8,11 @@ import Login from './components/Auth/Login'
 import Signup from './components/Auth/Signup'
 import Landing from './components/Landing'
 
-function App() {
-  return (
 
+
+function App() {
+
+  return (
     <GlobalProvider>
       <Router>
         <div className="container">

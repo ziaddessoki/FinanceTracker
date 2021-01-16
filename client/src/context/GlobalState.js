@@ -104,6 +104,7 @@ export const GlobalProvider = ({ children }) => {
     //get user from DB
     const getUserDB = async (id) => {
         try {
+            dispatch(authStart());
             const res = await axios.get(`/api/v1/user/${id}`)
 
             dispatch({
@@ -212,6 +213,30 @@ export const GlobalProvider = ({ children }) => {
         }
     }
 
+    const authCheckState = async () => {
+
+        const token = localStorage.getItem('token');
+        console.log(token)
+        if (!token) {
+            logout()
+        }
+        else {
+            const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            if (expirationDate <= new Date()) {
+                logout()
+            } else {
+
+                const userId = localStorage.getItem('fbId');
+                console.log(userId)
+                dispatch(authSuccess(token, userId));
+                dispatch(getUserDB(userId))
+                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
+            }
+
+        }
+
+    }
+
 
     return (<GlobalContext.Provider value={{
         user: state.user,
@@ -219,6 +244,7 @@ export const GlobalProvider = ({ children }) => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         auth,
+        authCheckState,
         logout,
         getUserDB,
         addUserDB,

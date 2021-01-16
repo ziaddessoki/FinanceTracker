@@ -12,7 +12,7 @@ const AppReducer = (state, action) => {
             return {
                 ...state,
                 user: { ...state.user, fbId: action.fbId, token: action.token, error: null },
-                loading: false,
+                // loading: false,
                 isAuthenticated: true,
             }
         case "AUTH_FAIL":
@@ -45,7 +45,8 @@ const AppReducer = (state, action) => {
                     name: payload.name,
                     email: payload.email
                 },
-                transactions: [...state.transactions, ...payload.transactions]
+                transactions: [...payload.transactions],
+                loading: false
                 // transactions: [...state.transactions]
                 // transactions: payload.transaction
             }
@@ -59,6 +60,7 @@ const AppReducer = (state, action) => {
                     name: payload.name,
                     email: payload.email
                 },
+                loading: false
 
             }
         case "GET_TRANSACTIONS":
