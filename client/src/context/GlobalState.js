@@ -216,7 +216,7 @@ export const GlobalProvider = ({ children }) => {
     const authCheckState = async () => {
 
         const token = localStorage.getItem('token');
-        console.log(token)
+
         if (!token) {
             logout()
         }
@@ -244,6 +244,7 @@ export const GlobalProvider = ({ children }) => {
         isAuthenticated: state.isAuthenticated,
         loading: state.loading,
         auth,
+        authFail,
         authCheckState,
         logout,
         getUserDB,

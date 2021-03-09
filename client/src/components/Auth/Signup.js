@@ -5,7 +5,7 @@ import Notifi from "../Bootstrap/Alert"
 
 const Signup = () => {
 
-    const { user, auth, addUserDB, isAuthenticated } = useContext(GlobalContext)
+    const { user, authFail, auth, addUserDB, isAuthenticated } = useContext(GlobalContext)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -27,7 +27,10 @@ const Signup = () => {
 
         if (password !== password2) {
 
-            setFormData({ ...formData, errMessage: true })
+            // setFormData({ ...formData, errMessage: true })
+            // user.error = "Passwords Don't Match!"
+            console.log("Passwords Don't Match!")
+            authFail("Passwords Don't Match!")
 
             //     props.setAlert("Password Don't Match", "danger")
         } else {
@@ -49,7 +52,7 @@ const Signup = () => {
                 }
             }
 
-            setTimeout(check, 0);
+            setTimeout(check, 200);
         }
     }
 
@@ -104,8 +107,9 @@ const Signup = () => {
                     onChange={e => onChange(e)}
                 />
 
-                <p style={{ color: "red", fontWeight: "bold", margin: "0px" }}>
-                    {errMessage ? "Passwords Don't Match!" : null}</p>
+
+
+                {/* {errMessage ? <Notifi err="Passwords Don't Match!" /> : null} */}
 
                 <input type="submit" className="btn btn-success" value="Register" />
             </form>
