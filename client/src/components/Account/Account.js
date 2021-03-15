@@ -13,10 +13,10 @@ export const Account = () => {
     const { isAuthenticated, loading, authCheckState } = useContext(GlobalContext)
 
 
-    useEffect(() => {
-        authCheckState();
-        //eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // useEffect(() => {
+    //     authCheckState();
+    //     //eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
 
     return (
         <Fragment>

@@ -15,7 +15,7 @@ const Signup = () => {
         errMessage: false,
     });
     //destructor
-    const { name, email, password, password2, errMessage } = formData
+    const { name, email, password, password2 } = formData
 
 
 
@@ -29,7 +29,7 @@ const Signup = () => {
 
             // setFormData({ ...formData, errMessage: true })
             // user.error = "Passwords Don't Match!"
-            console.log("Passwords Don't Match!")
+            // console.log("Passwords Don't Match!")
             authFail("Passwords Don't Match!")
 
             //     props.setAlert("Password Don't Match", "danger")

@@ -103,19 +103,32 @@ export const GlobalProvider = ({ children }) => {
 
     //get user from DB
     const getUserDB = async (id) => {
+        const res = await axios.get(`/api/v1/user/${id}`)
         try {
             dispatch(authStart());
-            const res = await axios.get(`/api/v1/user/${id}`)
 
             dispatch({
                 type: "GET_USER",
                 payload: res.data.data
             })
+
+            // setTimeout(() => {
+
+            //     dispatch({
+            //         type: "GET_USER",
+            //         payload: res.data.data
+            //     })
+            // }, 100)
         } catch (err) {
+            console.log(err)
+
+
             dispatch({
                 type: "AUTH_FAIL",
                 error: err.response.data.error
             })
+
+
         }
     }
 
@@ -227,9 +240,10 @@ export const GlobalProvider = ({ children }) => {
             } else {
 
                 const userId = localStorage.getItem('fbId');
+                dispatch(getUserDB(userId))
                 console.log(userId)
                 dispatch(authSuccess(token, userId));
-                dispatch(getUserDB(userId))
+
                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
             }
 

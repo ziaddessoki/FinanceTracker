@@ -12,6 +12,7 @@ import Landing from './components/Landing'
 
 function App() {
 
+
   return (
     <GlobalProvider>
       <Router>
@@ -20,8 +21,8 @@ function App() {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/account" component={Account} />
             <Route exact path="/signup" component={Signup} />
+            <Route exact path="/account" component={Account} />
           </Switch>
         </div>
       </Router>
