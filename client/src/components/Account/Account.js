@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import Balance from './Balance'
 import IncomeExpense from './IncomeExpense'
 import History from './History'
@@ -10,13 +10,7 @@ import { Fragment } from 'react'
 
 export const Account = () => {
 
-    const { isAuthenticated, loading, authCheckState } = useContext(GlobalContext)
-
-
-    // useEffect(() => {
-    //     authCheckState();
-    //     //eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
+    const { isAuthenticated, loading } = useContext(GlobalContext)
 
     return (
         <Fragment>
