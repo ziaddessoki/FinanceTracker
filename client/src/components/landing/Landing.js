@@ -2,6 +2,7 @@ import React from 'react'
 import hand from '../../assets/hand.gif'
 import cash from '../../assets/cash.gif'
 import cash2 from '../../assets/cash-clear.gif'
+import { Redirect, Link } from 'react-router-dom'
 
 const Landing = () => {
     return (
@@ -24,7 +25,9 @@ const Landing = () => {
             </p1>
             <img src={cash2} alt="hand" className="imgLanding" />
             <div className="clearfix"></div>
-            <button className="btn incomeBtn"></button>
+            <button className="btn toSignUpBtn"><Link to='/signup'>Start Building Portfolio</Link></button>
+            <br />
+            <h8><Link to='/signup'>Already have an account</Link></h8>
         </div>
     )
 }

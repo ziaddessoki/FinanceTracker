@@ -62,24 +62,39 @@ h1 {
 /* landing page*/
 
 h7 {
- 
  font-size: 20px;
  font-weight: bolder;
-  float: left;
+ float: left;
  margin-top: 20px;
  color: rgb(44, 228, 44);
 }
+
+
 p1{
   font-size: 14px;
   float: left;
   width: 250px;
  }
 
+
  .imgLanding{
    border-radius: 5px;
    width: 90px;
    float: right;
    margin:10px 30px 0 0;
+ }
+
+ /* .toSignUpBtn{
+  width: 90%;
+  background-color: rgb(4, 160, 4);
+  margin-top: 455px;
+  clear:both
+ } */
+
+ h8{
+   font-size: 18px;
+   font-weight: bolder;
+
  }
 
  /* End-landingPage */
@@ -279,7 +294,12 @@ input[type="password"] {
 .list li:hover .delete-btn {
   opacity: 1;
 }
-
+.toSignUpBtn{
+  width: 90%;
+  background-color: rgb(4, 160, 4);
+  margin: 65px auto 0px;
+  clear:both
+ }
 .clearfix{
   clear:both
 }

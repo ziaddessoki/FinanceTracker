@@ -24,8 +24,6 @@ export const Header = () => {
                         <li><Link to="/account">Account</Link></li>
                         <li><Link onClick={() => logout()} to="/">Log out</Link></li>
                     </ul>}
-
-
             </nav>
 
 
