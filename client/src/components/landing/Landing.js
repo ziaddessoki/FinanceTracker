@@ -24,7 +24,7 @@ const Landing = () => {
             </p1>
             <img src={cash2} alt="hand" className="imgLanding" />
             <div className="clearfix"></div>
-            <button></button>
+            <button className="btn incomeBtn"></button>
         </div>
     )
 }
