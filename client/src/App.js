@@ -6,7 +6,7 @@ import Header from './components/Header'
 import Account from './components/Account/Account'
 import Login from './components/Auth/Login'
 import Signup from './components/Auth/Signup'
-import Landing from './components/Landing'
+import Landing from './components/landing/Landing'
 
 
 

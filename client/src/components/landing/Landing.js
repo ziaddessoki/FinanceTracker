@@ -1,7 +1,7 @@
 import React from 'react'
-import hand from '../assets/hand.gif'
-import cash from '../assets/cash.gif'
-import cash2 from '../assets/cash-clear.gif'
+import hand from '../../assets/hand.gif'
+import cash from '../../assets/cash.gif'
+import cash2 from '../../assets/cash-clear.gif'
 
 const Landing = () => {
     return (
@@ -17,12 +17,14 @@ const Landing = () => {
             <br />
             <h7>Stay focused on your financial goals.</h7>
             <br />
-            <p1>
+            < p1 >
                 Improve your spending habits with custom
-                goals that keep you going. Save for a home,
+                goals that keep you going.Save for a home,
                 crush debt, and prepare for the future.
             </p1>
             <img src={cash2} alt="hand" className="imgLanding" />
+            <div className="clearfix"></div>
+            <button></button>
         </div>
     )
 }
