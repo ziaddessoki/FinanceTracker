@@ -2,9 +2,14 @@ import React from 'react'
 import hand from '../../assets/hand.gif'
 import cash from '../../assets/cash.gif'
 import cash2 from '../../assets/cash-clear.gif'
-import { Redirect, Link } from 'react-router-dom'
+import { Redirect, Link, useHistory } from 'react-router-dom'
 
 const Landing = () => {
+    let history = useHistory();
+
+    const redirect = () => {
+        history.push('/signup')
+    }
     return (
         <div>
             <h7>Experience a way to manage money</h7>
@@ -25,7 +30,8 @@ const Landing = () => {
             </p1>
             <img src={cash2} alt="hand" className="imgLanding" />
             <div className="clearfix"></div>
-            <button className="btn toSignUpBtn"><Link to='/signup'>Start Building Portfolio</Link></button>
+            {/* <button className="toSignUpBtn" ><Link className="toSignUpLink" to='/signup'>Start Building Portfolio</Link></button> */}
+            <button className="toSignUpBtn" onClick={redirect}>Start Building Portfolio</button>
             <br />
             <h8><Link to='/signup'>Already have an account</Link></h8>
         </div>

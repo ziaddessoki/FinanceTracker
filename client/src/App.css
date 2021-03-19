@@ -92,8 +92,9 @@ p1{
  } */
 
  h8{
-   font-size: 18px;
+   font-size: 15px;
    font-weight: bolder;
+   align-items: center;
 
  }
 
@@ -131,8 +132,14 @@ a:link{
   color: #333;
 } */
 
-a:hover {
+a:hover:not(.toSignUpLink) {
   color:red;
+}
+
+button.toSignUpBtn:hover{
+  padding: 5.5px;
+  font-size: 150%;
+  
 }
 
 .toolBar ul{
@@ -298,8 +305,16 @@ input[type="password"] {
   width: 90%;
   background-color: rgb(4, 160, 4);
   margin: 65px auto 0px;
-  clear:both
+  clear:both;
+  box-shadow: var(--box-shadow);
+  color: #fff;
+  border: 0;
+  font-size: 18px;
+  padding: 10px;
+  align-items:center;
+  border-radius: 2px;
  }
+ 
 .clearfix{
   clear:both
 }
