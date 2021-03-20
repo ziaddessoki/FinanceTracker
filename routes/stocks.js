@@ -40,23 +40,23 @@ router.get("/", async (req, res) => {
 })
 
 
-//@desc Get search for stocks 
+//@desc Get stock time series (for chart) 
 //@route GET /api/v1/stocks
 //@access Public
 //to use the middleware just add the file as a second paramter and route will be protected
-router.get("/alpha", async (req, res) => {
+router.get("/alpha/:sym", async (req, res) => {
     try {
         // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
         //     console.log(data)
         // });
-
-        const stock = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${alpha_apiKey}`)
+        console.log(alpha_apiKey)
+        const stock = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${req.params.sym}&interval=5min&apikey=${alpha_apiKey}`)
         console.log(stock)
         return res.status(200).json({
             success: true,
-            Api: "aplha",
-            count: stock.data.result.length,
-            data: stock.data.result
+            Api: "alpha",
+            count: stock.data.length,
+            data: stock.data
         })
 
 
