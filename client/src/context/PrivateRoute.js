@@ -17,23 +17,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 
 
-// //to protect private routes such as dashboard
-// const PrivateRoute = ({ component: Component, ...rest }) => {
-//     const { isAuthenticated } = useContext(GlobalContext)
-//     return (
-//         <Route
-//             {...rest}
-//             render={(props) =>
-//                 !isAuthenticated ? (
-//                     <Redirect to="/login" />
-//                 ) : (
-//                         <Component {...props} />
-//                     )
-//             }
-//         />
-//     )
-// };
-
 
 
 export default PrivateRoute;
