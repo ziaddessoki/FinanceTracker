@@ -19,14 +19,16 @@ router.get("/", async (req, res) => {
         // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
         //     console.log(data)
         // });
-
-        const stock = await axios.get("https://finnhub.io/api/v1/search?q=apple&token=c19ur3n48v6te7ig0jng")
-        console.log(stock)
+        const etf = finnhubClient.etfsProfile('spy');
+        console.log(etf)
+        // const stock = await axios.get("https://finnhub.io/api/v1/search?q=apple&token=c19ur3n48v6te7ig0jng")
+        // console.log(stock)
         return res.status(200).json({
             success: true,
             luck: "non",
-            count: stock.data.result.length,
-            data: stock.data.result
+            // count: stock.data.result.length,
+            // data: stock.data.result,
+            etf: etf.explanation
         })
 
 
@@ -108,20 +110,12 @@ router.get("/quote/:sym", async (req, res) => {
 //sym = symbol 
 router.get("/company/:sym", async (req, res) => {
     try {
-        // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
-        //     console.log(data)
-        // });
-        console.log(alpha_apiKey)
         const stock = await axios.get(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${req.params.sym}&apikey=${alpha_apiKey}`)
-        console.log(stock)
         return res.status(200).json({
             success: true,
             count: stock.data.length,
             data: stock.data
         })
-
-
-
     } catch (error) {
         return res.status(500).json({
             success: false,
@@ -130,17 +124,36 @@ router.get("/company/:sym", async (req, res) => {
     }
 })
 
+
+//@desc Get crypto exchange rate (def. USD)
 //@route GET /api/v1/stocks/crypto
 //@access Public
 //sym = symbol [btc,eth,ada, uni,doge,bnb]
 router.get("/crypto/:sym", async (req, res) => {
     try {
-        // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
-        //     console.log(data)
-        // });
-        console.log(alpha_apiKey)
         const stock = await axios.get(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${req.params.sym}&to_currency=USD&apikey=${alpha_apiKey}`)
-        console.log(stock)
+        return res.status(200).json({
+            success: true,
+            count: stock.data.length,
+            data: stock.data
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: "Server Error"
+        })
+    }
+})
+
+
+//@desc Get crypto chart
+//@route GET /api/v1/stocks/crypto
+//@access Public
+//timeFrame = [Daily,Weekly,monthly]
+//sym = symbol [btc,eth,ada, uni,doge,bnb]
+router.get("/crypto/:sym/:time", async (req, res) => {
+    try {
+        const stock = await axios.get(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_${req.params.time}&symbol=${req.params.sym}&market=usd&apikey=${alpha_apiKey}`)
         return res.status(200).json({
             success: true,
             count: stock.data.length,
