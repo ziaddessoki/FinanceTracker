@@ -132,7 +132,7 @@ router.get("/company/:sym", async (req, res) => {
 
 //@route GET /api/v1/stocks/crypto
 //@access Public
-//sym = symbol 
+//sym = symbol [btc,eth,ada, uni,doge,bnb]
 router.get("/crypto/:sym", async (req, res) => {
     try {
         // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
