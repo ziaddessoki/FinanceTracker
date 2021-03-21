@@ -103,11 +103,9 @@ router.get("/quote/:sym", async (req, res) => {
 })
 
 //@desc Get company info
-//@route GET /api/v1/stocks/quote
+//@route GET /api/v1/stocks/company
 //@access Public
 //sym = symbol 
-
-//to use the middleware just add the file as a second paramter and route will be protected
 router.get("/company/:sym", async (req, res) => {
     try {
         // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
@@ -131,5 +129,34 @@ router.get("/company/:sym", async (req, res) => {
         })
     }
 })
+
+//@route GET /api/v1/stocks/crypto
+//@access Public
+//sym = symbol 
+router.get("/crypto/:sym", async (req, res) => {
+    try {
+        // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
+        //     console.log(data)
+        // });
+        console.log(alpha_apiKey)
+        const stock = await axios.get(`https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=${req.params.sym}&to_currency=USD&apikey=${alpha_apiKey}`)
+        console.log(stock)
+        return res.status(200).json({
+            success: true,
+            count: stock.data.length,
+            data: stock.data
+        })
+
+
+
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            error: "Server Error"
+        })
+    }
+})
+
+
 
 module.exports = router;
