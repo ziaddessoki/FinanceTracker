@@ -81,21 +81,12 @@ router.get("/alpha/:sym/:int", async (req, res) => {
 //to use the middleware just add the file as a second paramter and route will be protected
 router.get("/quote/:sym", async (req, res) => {
     try {
-        // const stock = await finnhubClient.stockCandles("AAPL", "D", 1590988249, 1591852249, {}, (error, data, response) => {
-        //     console.log(data)
-        // });
-        console.log(alpha_apiKey)
         const stock = await axios.get(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${req.params.sym}&apikey=${alpha_apiKey}`)
-        console.log(stock)
         return res.status(200).json({
             success: true,
-            Api: "alpha",
             count: stock.data.length,
             data: stock.data
         })
-
-
-
     } catch (error) {
         return res.status(500).json({
             success: false,
@@ -149,14 +140,16 @@ router.get("/crypto/:sym", async (req, res) => {
 //@desc Get crypto chart
 //@route GET /api/v1/stocks/crypto
 //@access Public
-//timeFrame = [Daily,Weekly,monthly]
+//timeSeries = [Daily,Weekly,monthly]
 //sym = symbol [btc,eth,ada, uni,doge,bnb]
 router.get("/crypto/:sym/:time", async (req, res) => {
     try {
         const stock = await axios.get(`https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_${req.params.time}&symbol=${req.params.sym}&market=usd&apikey=${alpha_apiKey}`)
+        const t = req.params.time
+        const tCapitalized = t.charAt(0).toUpperCase() + t.slice(1)
         return res.status(200).json({
             success: true,
-            count: stock.data.length,
+            count: Object.keys(stock.data[`Time Series (Digital Currency ${tCapitalized})`]).length,
             data: stock.data
         })
 
