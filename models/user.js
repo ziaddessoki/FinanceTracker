@@ -40,7 +40,7 @@ const UserSchema = new mongoose.Schema({
         default: []
     },
     savedStocks: {
-        type: Array,
+        type: [],
         default: undefined,
     }
 });
