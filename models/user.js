@@ -38,6 +38,10 @@ const UserSchema = new mongoose.Schema({
     transactions: {
         type: [TransactionSchema],
         default: []
+    },
+    savedStocks: {
+        type: Array,
+        default: undefined,
     }
 });
 
