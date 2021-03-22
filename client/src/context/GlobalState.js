@@ -11,6 +11,11 @@ const initialState = {
         email: "",
         token: null,
         error: null,
+        savedStocks: [],
+    },
+    stock: {
+        top10: [tsla, ibm, appl, msft, penn],
+        crypto: [btc, eth, ada, uni, doge, bnb]
     },
     transactions: [],
     loading: false,
