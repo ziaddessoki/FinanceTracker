@@ -1,6 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer'
 import axios from "axios"
+import { getTransactions as test, deleteTransaction as test2 } from './actions/transactions.js'
 
 //initial State
 const initialState = {
@@ -14,8 +15,8 @@ const initialState = {
         savedStocks: [],
     },
     stock: {
-        top10: [tsla, ibm, appl, msft, penn],
-        crypto: [btc, eth, ada, uni, doge, bnb]
+        top10: ["tsla", "ibm", "appl", "msft", "penn"],
+        crypto: ["btc", "eth", "ada", "uni", "doge", "bnb"]
     },
     transactions: [],
     loading: false,
@@ -175,8 +176,8 @@ export const GlobalProvider = ({ children }) => {
                 error: err.response.data.error
             })
         }
-    }
-
+    };
+    // const getTransactions = test();
     // Get all user's transaction 
     const getTransactions = async (userId) => {
         try {
@@ -195,6 +196,7 @@ export const GlobalProvider = ({ children }) => {
     }
 
     //Transactions actions
+    // const deleteTransaction = test2()
     const deleteTransaction = async (userId, id) => {
         try {
             const res = await axios.delete(`/api/v1/transactions/${userId}/${id}`)
@@ -256,6 +258,32 @@ export const GlobalProvider = ({ children }) => {
 
     }
 
+    //Look up stock quotes 
+    const getStockQuote = async (stock) => { }
+
+
+    //get stock time series for chart
+    //timeSeries = [Daily,Weekly,monthly]
+    const getStockTime = async (stock, time) => { }
+
+
+    //get stock intrada for chart
+    //interval = [1,5,15,30,60]min
+    //might not use
+    const getStockTime = async (stock, interval) => { }
+
+    //get stock company info.
+    const getCompanyInfo = async (company) => { }
+
+
+    //get crypto quote
+    //sym = symbol [btc,eth,ada, uni,doge,bnb]
+    const getCrypto = async (crypto) => { }
+
+    //get crypto time series
+    //timeSeries = [Daily,Weekly,monthly]
+    const getCrypto = async (crypto, time) => { }
+
 
     return (<GlobalContext.Provider value={{
         user: state.user,
@@ -272,9 +300,7 @@ export const GlobalProvider = ({ children }) => {
         getTransactions,
         deleteTransaction,
         addTransaction,
-
     }}>
         {children}
     </GlobalContext.Provider>)
 }
-
